@@ -1,0 +1,85 @@
+<?php
+require_once('proj4-constants.php');
+?>
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
+  <link rel="stylesheet" href="createUser.css" type="text/css"> </head>
+<body>
+<script>
+function passwordMatchCheck()
+{
+    //Store the password fields
+    var confirm_password = document.getElementById('confirm_password');
+	var password = document.getElementById('passwd');
+	var submitBut = document.getElementById('submit');
+    //output message 
+    var output = document.getElementById('outputMessage');
+    //Set the colors 
+    var noMatch = "#FA8072";
+	var Match = "#66CDAA";
+    //Compare the values in the password field 
+    if(password.value == confirm_password.value){
+        confirm_password.style.backgroundColor = Match;
+		submitBut.disabled = false;
+        output.style.color = Match;
+        output.innerHTML = "Passwords Match."
+    }else{
+        confirm_password.style.backgroundColor = noMatch;
+		submitBut.disabled = true;
+        output.style.color = noMatch;
+        output.innerHTML = "Passwords Do Not Match."
+    }
+}  
+</script>
+  <nav class="navbar navbar-expand-md bg-secondary navbar-dark p-2">
+    <div class="container">
+      <a class="navbar-brand mr-auto" href="createUser.html"></a>
+	          <img src="logo.PNG" width="30" height="30" class="d-inline-block align-top p-0" alt=""> </a>
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span> </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto"> </ul>
+
+      </div>
+    </div>
+  </nav>
+  <div class="py-5">
+    <div class="container">
+      <div class="row">
+        <img src="teamLogo.PNG" class="mx-auto"> </div>
+    </div>
+    <div class="py-5">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-3"> </div>
+          <div class="col-md-6">
+            <div class="card text-white p-5 bg-primary">
+              <div class="card-body">
+                <h1 class="mb-4">Create Account</h1>
+                <form action= "createUser_handler.php" method ="post">
+                  <div class="form-group"> <label>Email address</label>
+                    <input type="email" id="emailAdd" name="emailAdd" class="form-control"  minlength="<?php echo $minLength;?>" placeholder="Enter email" maxlength="<?php echo $maxLengths['emailAdd'];?>" required='required'> </div>
+                  <div class="form-group"> <label>Password</label>
+                    <input type="password" id="passwd" name="passwd" class="form-control"  minlength="<?php echo $minLength;?>" maxlength="<?php echo $maxLengths['passwd'];?>" placeholder="Password" required='required' onchange='passwordMatchCheck();' > </div>
+					<div class="form-group"> <label>Confirm Password</label>
+                    <input type="password" id="confirm_password" name="confirm_password"  minlength="<?php echo $minLength;?>" maxlength="<?php echo $maxLengths['confirm_password'];?>" onkeyup="passwordMatchCheck(); return false;" class="form-control" placeholder="Password" required='required'onchange='check_pass();'> </div>
+                 <button type="createAccount" id="submit" name="submit" class="btn btn-secondary">Create Account</button> 
+				  </br>
+				 <center><span id="outputMessage" class="outputMessage"></span></center>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
+  </div>
+</body>
+
+</html>
