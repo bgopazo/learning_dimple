@@ -31,8 +31,10 @@
 				coordinates.push(point);
 			}
 		}
+ HEAD
 
-		//create array with calculated values; also create coordinate array
+		//create array with calculated values; create coordinate array
+ graph_javascript remove 'also'
 		for (var i=0; i<tasks.length; i++) {
 			//perform date calculations and set variables
 			var dueDate = new Date(tasks[i].due);
