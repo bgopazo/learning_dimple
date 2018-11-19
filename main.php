@@ -4,7 +4,7 @@ require_once('proj4connectpath.php');
 require_once('utils.php');
 require_once('proj4-constants.php');
 session_start();
-		//prepared statements were vry awkward using 'bind_result' because I could not 
+		//prepared statements were very awkward using 'bind_result' because I could not 
 		//find a way to fetch the columns as a row due to php version (5.2)
 		//get_result() to be used with fetch_assoc() was not introduced until php 5.3
 		$email = safeLookup($_SESSION,"email","");
